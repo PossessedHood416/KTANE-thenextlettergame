@@ -11,16 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
   m_Name: ModConfig
   m_EditorClassIdentifier: 
-  id: NextLetterGames
-  title: Next Letter Game + CNGL
+  id: TheNextLetterGame
+  title: The Next Letter Game
   author: PossessedHood416
   description: "You?!?! V.\r\n\r\nInput the next letter of the alphabet whenever the
-    needy activates.\r\n\r\nFont is Fixedsys.\r\n===============================================================================\r\nThe
-    alphabet doesn't have to be in the order that is in already. It can be rearranged
-    and still work fine.\r\n\r\nInput a specific letter before or after the displayed
-    letter, but with an offset.\r\n\nFont is Fixedsys.\r\n===============================================================================\r\nThe
-    manuals can be found in the manuals folder of the game or at ktane.timwi.de.\r\n\r\nContact
-    possessedhood416 on Discord if there are any bugs or other errors."
-  version: v1.0
+    needy activates.\r\n\r\nFont is Fixedsys.\r\n\nThe manuals can be found in the
+    manuals folder of the game or at ktane.timwi.de.\r\n\r\nContact possessedhood416
+    on Discord if there are any bugs or other errors."
+  version: v1.1
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 01cf8b9cee06ca54880ad9d41138acf8, type: 3}

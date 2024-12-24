@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CountdownTime: 10
   ModuleType: NextLetterGame
-  ModuleDisplayName: Next Letter Game
+  ModuleDisplayName: The Next Letter Game
   RequiresTimerVisibility: 0
   WarnAtFiveSeconds: 1
 --- !u!114 &114990544492691844
