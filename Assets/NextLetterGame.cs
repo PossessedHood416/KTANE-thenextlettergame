@@ -72,6 +72,9 @@ public class NextLetterGame : MonoBehaviour {
    protected void OnNeedyDeactivation () { //blah blah blah
       if(!isActive) return; //failsafe
 
+      //dont strike when bomb is solved
+      if(Bomb.GetSolvableModuleNames().Count == Bomb.GetSolvedModuleNames().Count) return;
+
       if(Alphabet[(CallIndex+1) % 26] != Response){
          Needy.HandleStrike();
          Debug.LogFormat("[Next Letter Game #{0}] Answered {1}, Wrong! Answer should have been {2}.", ModuleId, Response, Alphabet[(CallIndex+1) % 26]);
@@ -94,22 +97,17 @@ public class NextLetterGame : MonoBehaviour {
    }
 
    void Update () { //Shit that happens at any point after initialization
-
       if(!isFocused || !isActive){
          return;
       }
-
-      //younked from ciphers
+      //yoinked from ciphers
       for (int ltr = 0; ltr < 26; ltr++){
 			if (Input.GetKeyDown(((char)('a' + ltr)).ToString())){
             Response = Alphabet[ltr];
             break;
          }
       }
-
-      Display.text = Call + "" + Response;
-
-   
+      Display.text = Call + "" + Response;   
    }
 
 #pragma warning disable 414
