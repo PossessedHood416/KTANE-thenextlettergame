@@ -862,8 +862,8 @@ MonoBehaviour:
   m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: TheNextLetterGame-modsettings.txt
-  SettingsPath: TheNextLetterGame-modsettings.txt
+  Settings: NLGsettings.json
+  SettingsPath: NLGsettings.json
 --- !u!114 &114272315998802666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -990,7 +990,6 @@ MonoBehaviour:
   Audio: {fileID: 114915473299363512}
   Needy: {fileID: 114928242193879532}
   NeedySelctable: {fileID: 114139553842080666}
-  ModSettings: {fileID: 114215804278564616}
   SubButton: {fileID: 114520455955948306}
   Display: {fileID: 102753913704377928}
   SubText: {fileID: 102068691846951340}
@@ -1084,7 +1083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79f4850f020520489a5989619f8f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bomb: {fileID: 114454383462897410}
+  Bomb: {fileID: 0}
 --- !u!136 &136438018125065114
 CapsuleCollider:
   m_ObjectHideFlags: 1

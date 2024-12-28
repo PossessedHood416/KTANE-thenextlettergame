@@ -35,25 +35,21 @@ public class NextLetterGame : MonoBehaviour {
    void Awake () { //Avoid doing calculations in here regarding edgework. Just use this for setting up buttons for simplicity.
       ModuleId = ModuleIdCounter++;
 
-      Needy.OnNeedyActivation += OnNeedyActivation;
-      Needy.OnNeedyDeactivation += OnNeedyDeactivation;
-      Needy.OnTimerExpired += OnTimerExpired;
-
       NeedySelctable.OnFocus += delegate { isFocused = true; };
       NeedySelctable.OnDefocus += delegate { isFocused = false; };
 
       SubButton.OnInteract += delegate () { ButtonPress(); return false; };
+
+      Needy.OnNeedyActivation += OnNeedyActivation;
+      Needy.OnNeedyDeactivation += OnNeedyDeactivation;
+      Needy.OnTimerExpired += OnTimerExpired;
    }
 
    void ButtonPress (){
       SubButton.AddInteractionPunch();
       Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, SubButton.transform);
-      
-      if(!isFocused || !isActive){
-         return;
-      }
-
-      OnNeedyDeactivation();
+      if(!isFocused || !isActive) return;
+      OnTimerExpired();
    }
 
    protected void OnNeedyActivation () { //Shit that happens when a needy turns on.
@@ -66,30 +62,26 @@ public class NextLetterGame : MonoBehaviour {
 
       Display.text = Call + "" + Response;
       Debug.LogFormat("[Next Letter Game #{0}] What comes after {1}?", ModuleId, Call);
-
    }
 
    protected void OnNeedyDeactivation () { //blah blah blah
-      if(!isActive) return; //failsafe
-
-      //dont strike when bomb is solved
-      if(Bomb.GetSolvableModuleNames().Count == Bomb.GetSolvedModuleNames().Count) return;
-
-      if(Alphabet[(CallIndex+1) % 26] != Response){
-         Needy.HandleStrike();
-         Debug.LogFormat("[Next Letter Game #{0}] Answered {1}, Wrong! Answer should have been {2}.", ModuleId, Response, Alphabet[(CallIndex+1) % 26]);
-      } else {
-         Debug.LogFormat("[Next Letter Game #{0}] Answered {1}, Right!", ModuleId, Response);
-      }
-
-      Needy.OnPass();
       Display.text = "--";
       SubText.text = "-";
       isActive = false;
    }
 
    protected void OnTimerExpired () { //Shit that happens when a needy turns off due to running out of time.
+      if(!isActive) return;
       OnNeedyDeactivation();
+
+      if(Alphabet[(CallIndex+1) % 26] != Response){
+         Debug.LogFormat("[Next Letter Game #{0}] Answered {1}, Wrong! Answer should have been {2}.", ModuleId, Response, Alphabet[(CallIndex+1) % 26]);
+         Needy.HandleStrike();
+      } else {
+         Debug.LogFormat("[Next Letter Game #{0}] Answered {1}, Right!", ModuleId, Response);
+      }
+
+      Needy.HandlePass();
    }
 
    void Start () { //Shit that you calculate, usually a majority if not all of the module
@@ -97,9 +89,16 @@ public class NextLetterGame : MonoBehaviour {
    }
 
    void Update () { //Shit that happens at any point after initialization
+      //congrats on solve
+      if(Bomb.GetSolvableModuleNames().Count == Bomb.GetSolvedModuleNames().Count){
+         Display.text = "GG";
+         return;
+      }
+
       if(!isFocused || !isActive){
          return;
       }
+
       //yoinked from ciphers
       for (int ltr = 0; ltr < 26; ltr++){
 			if (Input.GetKeyDown(((char)('a' + ltr)).ToString())){
