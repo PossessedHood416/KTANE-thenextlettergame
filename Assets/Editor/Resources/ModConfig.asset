@@ -18,6 +18,6 @@ MonoBehaviour:
     needy activates.\r\n\r\nFont is Fixedsys.\r\n\nThe manuals can be found in the
     manuals folder of the game or at ktane.timwi.de.\r\n\r\nContact possessedhood416
     on Discord if there are any bugs or other errors."
-  version: v1.4
+  version: v1.5
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 01cf8b9cee06ca54880ad9d41138acf8, type: 3}

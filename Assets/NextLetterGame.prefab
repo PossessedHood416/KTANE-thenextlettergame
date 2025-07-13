@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 114139553842080666}
   - component: {fileID: 114990544492691844}
   - component: {fileID: 114539099105039056}
-  - component: {fileID: 114215804278564616}
   m_Layer: 0
   m_Name: NextLetterGame
   m_TagString: Untagged
@@ -851,19 +850,6 @@ MonoBehaviour:
   AllowSelectionWrapY: 0
   ForceSelectionHighlight: 0
   ForceInteractionHighlight: 0
---- !u!114 &114215804278564616
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1676409040304040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Settings: NLGsettings.json
-  SettingsPath: NLGsettings.json
 --- !u!114 &114272315998802666
 MonoBehaviour:
   m_ObjectHideFlags: 1

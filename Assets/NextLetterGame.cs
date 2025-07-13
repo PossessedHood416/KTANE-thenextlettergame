@@ -32,6 +32,8 @@ public class NextLetterGame : MonoBehaviour {
    private char Response = '?';
    private int CallIndex = 0;
 
+   bool TwitchPlaysActive;
+
    void Awake () { //Avoid doing calculations in here regarding edgework. Just use this for setting up buttons for simplicity.
       ModuleId = ModuleIdCounter++;
 
@@ -62,6 +64,10 @@ public class NextLetterGame : MonoBehaviour {
 
       Display.text = Call + "" + Response;
       Debug.LogFormat("[Next Letter Game #{0}] What comes after {1}?", ModuleId, Call);
+
+      if(TwitchPlaysActive){
+         Needy.SetNeedyTimeRemaining(30f);   
+      }
    }
 
    protected void OnNeedyDeactivation () { //blah blah blah
