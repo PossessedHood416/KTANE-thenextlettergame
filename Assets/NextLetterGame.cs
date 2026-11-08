@@ -120,7 +120,7 @@ public class NextLetterGame : MonoBehaviour {
 #pragma warning restore 414
 
 	IEnumerator ProcessTwitchCommand (string Command) {
-		Command = Command.Trim().ToUpper();
+		Command = Command.Trim().ToUpperInvariant();
 		isFocused = true;
 		yield return null;
 
@@ -136,7 +136,9 @@ public class NextLetterGame : MonoBehaviour {
 			}
 		}
 
-		for(int i = 0; i < Command.Length; i++){
+		yield return null;
+
+		for (int i = 0; i < Command.Length; i++){
 
 			if(Command[i] == '*'){
 				SubButton.OnInteract();
@@ -156,7 +158,6 @@ public class NextLetterGame : MonoBehaviour {
 		isFocused = true;
 		
 		while(true){
-
 			while(!isActive){
 				yield return null;
 			}
